@@ -15,12 +15,12 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author jluis
  */
-public class Administracion extends javax.swing.JFrame {
+public class Inventario extends javax.swing.JFrame {
 
     /**
      * Creates new form Administracion
      */
-    public Administracion() {
+    public Inventario() {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
@@ -28,10 +28,10 @@ public class Administracion extends javax.swing.JFrame {
         }
         initComponents();
         setLocationRelativeTo(null);
-        String texto1 = "<html><center><body>REPORTE<br>VENTAS</body></center></html>";
+        /*String texto1 = "<html><center><body>REPORTE<br>VENTAS</body></center></html>";
         T1.setText(texto1);
         String texto2 = "<html><center><body>TOTAL<br>EN<br>CAJA</body></center></html>";
-        T2.setText(texto2);
+        T2.setText(texto2);*/
         String texto3 = "<html><center><body>INVENTARIO<br>DE<br>BEBIDAS</body></center></html>";
         T3.setText(texto3);
          String texto4 = "<html><center><body>INVENTARIO<br>DE<br>COMIDA</body></center></html>";
@@ -40,20 +40,17 @@ public class Administracion extends javax.swing.JFrame {
         T5.setText(texto5);
         String texto6 = "<html><center><body>DESCARGAS<br>DE<br>INVENTARIO</body></center></html>";
         T6.setText(texto6);
-        String texto7 = "<html><center><body>CORREGIR<br>ORDEN</body></center></html>";
-        T7.setText(texto7);
+        /*String texto7 = "<html><center><body>CORREGIR<br>ORDEN</body></center></html>";
+        T7.setText(texto7);*/
         String texto8 = "<html><center><body>VOLVER<br>A<br>INICIO</body></center></html>";
         T8.setText(texto8);
     }
     
      private void CambiarBodes(){
-         P1.setBorder(BorderFactory.createEmptyBorder());
-         P2.setBorder(BorderFactory.createEmptyBorder());
          P3.setBorder(BorderFactory.createEmptyBorder());
          P4.setBorder(BorderFactory.createEmptyBorder());
          P5.setBorder(BorderFactory.createEmptyBorder());
          P6.setBorder(BorderFactory.createEmptyBorder());
-         P7.setBorder(BorderFactory.createEmptyBorder());
          P8.setBorder(BorderFactory.createEmptyBorder());
     }
 
@@ -68,10 +65,6 @@ public class Administracion extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        P1 = new ClassAngels.PanelRound();
-        T1 = new javax.swing.JLabel();
-        P2 = new ClassAngels.PanelRound();
-        T2 = new javax.swing.JLabel();
         P3 = new ClassAngels.PanelRound();
         T3 = new javax.swing.JLabel();
         P4 = new ClassAngels.PanelRound();
@@ -80,8 +73,6 @@ public class Administracion extends javax.swing.JFrame {
         T5 = new javax.swing.JLabel();
         P6 = new ClassAngels.PanelRound();
         T6 = new javax.swing.JLabel();
-        P7 = new ClassAngels.PanelRound();
-        T7 = new javax.swing.JLabel();
         P8 = new ClassAngels.PanelRound();
         T8 = new javax.swing.JLabel();
         PANEL = new javax.swing.JPanel();
@@ -94,60 +85,6 @@ public class Administracion extends javax.swing.JFrame {
         jPanel1.setRequestFocusEnabled(false);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        P1.setBackground(new java.awt.Color(204, 204, 204));
-        P1.setPreferredSize(new java.awt.Dimension(120, 59));
-        P1.setRoundBottomLeft(20);
-        P1.setRoundBottomRight(20);
-        P1.setRoundTopLeft(20);
-        P1.setRoundTopRight(20);
-
-        T1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        T1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        T1.setText("VENTAS");
-        T1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                T1MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout P1Layout = new javax.swing.GroupLayout(P1);
-        P1.setLayout(P1Layout);
-        P1Layout.setHorizontalGroup(
-            P1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(T1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-        );
-        P1Layout.setVerticalGroup(
-            P1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(T1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-        );
-
-        P2.setBackground(new java.awt.Color(102, 204, 255));
-        P2.setPreferredSize(new java.awt.Dimension(120, 59));
-        P2.setRoundBottomLeft(20);
-        P2.setRoundBottomRight(20);
-        P2.setRoundTopLeft(20);
-        P2.setRoundTopRight(20);
-
-        T2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        T2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        T2.setText("TOTAL CAJA");
-        T2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                T2MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout P2Layout = new javax.swing.GroupLayout(P2);
-        P2.setLayout(P2Layout);
-        P2Layout.setHorizontalGroup(
-            P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(T2, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-        );
-        P2Layout.setVerticalGroup(
-            P2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(T2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-        );
 
         P3.setBackground(new java.awt.Color(255, 204, 153));
         P3.setPreferredSize(new java.awt.Dimension(120, 59));
@@ -268,36 +205,6 @@ public class Administracion extends javax.swing.JFrame {
             .addComponent(T6, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
         );
 
-        P7.setBackground(new java.awt.Color(0, 255, 204));
-        P7.setPreferredSize(new java.awt.Dimension(120, 59));
-        P7.setRoundBottomLeft(20);
-        P7.setRoundBottomRight(20);
-        P7.setRoundTopLeft(20);
-        P7.setRoundTopRight(20);
-
-        T7.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        T7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        T7.setText("GASTOS POR DIA");
-        T7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                T7MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                T7MouseEntered(evt);
-            }
-        });
-
-        javax.swing.GroupLayout P7Layout = new javax.swing.GroupLayout(P7);
-        P7.setLayout(P7Layout);
-        P7Layout.setHorizontalGroup(
-            P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(T7, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-        );
-        P7Layout.setVerticalGroup(
-            P7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(T7, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-        );
-
         P8.setBackground(new java.awt.Color(255, 51, 51));
         P8.setPreferredSize(new java.awt.Dimension(120, 59));
         P8.setRoundBottomLeft(20);
@@ -334,32 +241,23 @@ public class Administracion extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(P1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(P2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(P3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(P4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(P5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(P6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(P7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(P5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(P8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(P1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(P2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(P3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(P3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(P4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(P5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(P6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(P7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(P8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
@@ -410,20 +308,8 @@ public class Administracion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void T1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_T1MouseClicked
-        AdVentasPorDia op3 = new AdVentasPorDia();
-        op3.setSize(1025, 635);
-        op3.setLocation(0, 0);
-        PANEL.removeAll();
-        PANEL.add(op3,BorderLayout.CENTER);
-        PANEL.revalidate();
-        PANEL.repaint();
-        CambiarBodes();
-        P1.setBorder(BorderFactory.createMatteBorder(0, 0, 10, 0, Color.red));
-    }//GEN-LAST:event_T1MouseClicked
-
     private void T3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_T3MouseClicked
-        AdProductosInventarioBebidas op2 = new AdProductosInventarioBebidas(1);
+        AdProductosInventarioBebidas op2 = new AdProductosInventarioBebidas(2);
         op2.setSize(1024, 635);
         op2.setLocation(0, 0);
         PANEL.removeAll();
@@ -435,7 +321,7 @@ public class Administracion extends javax.swing.JFrame {
     }//GEN-LAST:event_T3MouseClicked
 
     private void T4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_T4MouseClicked
-       AdProductosInventarioComida op2 = new AdProductosInventarioComida(1);
+       AdProductosInventarioComida op2 = new AdProductosInventarioComida(2);
         op2.setSize(1024, 635);
         op2.setLocation(0, 0);
         PANEL.removeAll();
@@ -446,18 +332,6 @@ public class Administracion extends javax.swing.JFrame {
         P4.setBorder(BorderFactory.createMatteBorder(0, 0, 10, 0, Color.red));
                                   
     }//GEN-LAST:event_T4MouseClicked
-
-    private void T2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_T2MouseClicked
-        AdTotalEnCaja op4 = new AdTotalEnCaja();
-        op4.setSize(1024, 635);
-        op4.setLocation(0, 0);
-        PANEL.removeAll();
-        PANEL.add(op4,BorderLayout.CENTER);
-        PANEL.revalidate();
-        PANEL.repaint();
-        CambiarBodes();
-        P2.setBorder(BorderFactory.createMatteBorder(0, 0, 10, 0, Color.red));
-    }//GEN-LAST:event_T2MouseClicked
 
     private void T4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_T4MouseEntered
         // TODO add your handling code here:
@@ -497,22 +371,6 @@ public class Administracion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_T6MouseEntered
 
-    private void T7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_T7MouseClicked
-        PermisoModificarOrden op2 = new PermisoModificarOrden();
-        op2.setSize(1104, 635);
-        op2.setLocation(0, 0);
-        PANEL.removeAll();
-        PANEL.add(op2,BorderLayout.CENTER);
-        PANEL.revalidate();
-        PANEL.repaint();
-        CambiarBodes();
-        P7.setBorder(BorderFactory.createMatteBorder(0, 0, 10, 0, Color.red));
-    }//GEN-LAST:event_T7MouseClicked
-
-    private void T7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_T7MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_T7MouseEntered
-
     private void T8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_T8MouseClicked
         Ordenes F = new Ordenes();
         F.setVisible(true);
@@ -540,42 +398,38 @@ public class Administracion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Administracion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Administracion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Administracion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Administracion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inventario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Administracion().setVisible(true);
+                new Inventario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private ClassAngels.PanelRound P1;
-    private ClassAngels.PanelRound P2;
     private ClassAngels.PanelRound P3;
     private ClassAngels.PanelRound P4;
     private ClassAngels.PanelRound P5;
     private ClassAngels.PanelRound P6;
-    private ClassAngels.PanelRound P7;
     private ClassAngels.PanelRound P8;
     public static javax.swing.JPanel PANEL;
-    private javax.swing.JLabel T1;
-    private javax.swing.JLabel T2;
     private javax.swing.JLabel T3;
     private javax.swing.JLabel T4;
     private javax.swing.JLabel T5;
     private javax.swing.JLabel T6;
-    private javax.swing.JLabel T7;
     private javax.swing.JLabel T8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

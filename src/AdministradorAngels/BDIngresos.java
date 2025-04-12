@@ -628,7 +628,67 @@ public static ArrayList<InsertarProducto>ListaHistorialIngresosDescargas (int a,
         return list;
 }          
         
+ /////////////////////////////////////////////////////ACTUALIZAR ORDENES CON ERRORES/////////////////////////////////////////////
     
+   
+    public static ArrayList<Productos> OrdenesAbiertas() {
+        return OrderRe("select noorden,ordendia,id_mesa,Total,Fecha from ordenes where estado = 1");    
+ }  
 
+    private static ArrayList<Productos> OrderRe(String sql){
+    ArrayList<Productos> list = new ArrayList<Productos>();
+        BDConexion conecta = new BDConexion();
+    Connection cn = conecta.getConexion();
     
+        try {
+            Productos t;
+            Statement stmt = cn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()){
+                 t = new Productos();
+                 t.setNoOrden(rs.getInt("noorden"));
+                 t.setOrdenDia(rs.getInt("ordendia"));
+                 t.setNoMesa(rs.getInt("id_mesa"));
+                 t.setTotal(rs.getDouble("TOTAL"));
+                 t.setFecha(rs.getString("FECHA"));
+                 list.add(t);
+                            }
+            cn.close();
+        } catch (SQLException e) {
+            System.out.println("error consulta DE LA A TABLA "+e);
+            return null;
+        } 
+        return list;
+}
+
+    public static ArrayList<Productos> DetalleOrdenes(int orden) {
+        return OrderDetalle("SELECT v.idventa,p.codigo,concat(upper(DESCRIPCION1),' ',upper(DESCRIPCION2),' ',precio) as Descripcion,cantidad,TOTAL FROM angels.ventas v INNER join productos p ON v.CODIGO = p.CODIGO WHERE NOORDEN ="+orden);    
+    }  
+
+    private static ArrayList<Productos> OrderDetalle(String sql){
+    ArrayList<Productos> list = new ArrayList<Productos>();
+        BDConexion conecta = new BDConexion();
+    Connection cn = conecta.getConexion();
+    
+        try {
+            Productos t;
+            Statement stmt = cn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()){
+                 t = new Productos();
+                 t.setId_producto(rs.getInt("idventa"));
+                 t.setCodigo(rs.getInt("codigo"));
+                 t.setDescripcion(rs.getString("Descripcion"));
+                 t.setCantidad(rs.getInt("cantidad")); 
+                 t.setTotal(rs.getDouble("TOTAL"));
+                 list.add(t);
+                            }
+            cn.close();
+        } catch (SQLException e) {
+            System.out.println("error consulta DE LA A TABLA "+e);
+            return null;
+        } 
+        return list;
+}    
+
 }

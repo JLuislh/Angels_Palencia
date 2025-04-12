@@ -4,8 +4,11 @@
  */
 package Inicio;
 
+import BDclass.BDConexion;
 import ClassAngels.MesasClass;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -37,6 +40,8 @@ public final class MesasSeguimiento extends javax.swing.JFrame {
      int orden18;
      int orden19;
      int orden20;
+     int ordendia;
+     int[] ordenmesa = new int[21];
      Color Mesas = new Color(255,51,51);
 
     /**
@@ -48,8 +53,25 @@ public final class MesasSeguimiento extends javax.swing.JFrame {
         habilitartodo();
         disponibilidad(false);
         Etiquetas();
-        
+        for (int i = 0; i < ordenmesa.length; i++) {ordenmesa[i] = i + 1;}
     }
+    
+    private void BuscarOrdenDia() {
+            try {
+                BDConexion conecta = new BDConexion();
+                Connection cn = conecta.getConexion();
+                java.sql.Statement stmt = cn.createStatement();
+                ResultSet rs = stmt.executeQuery("select ordendia  from ordenes where date_format(fecha,'%d/%m/%Y') = date_format(now(),'%d/%m/%Y') and NOORDEN = "+noorden);
+                while (rs.next()) {
+                ordendia= (rs.getInt(1));
+                }
+                rs.close();
+                stmt.close();
+                cn.close();
+            } catch (Exception error) {
+                System.out.print(error);
+            }
+        }
 
     public void habilitartodo() {
         Mesa1.setEnabled(true);
@@ -93,91 +115,113 @@ public final class MesasSeguimiento extends javax.swing.JFrame {
         Mesa19.setBackground(Color.GREEN);
         Mesa20.setBackground(Color.GREEN);
     }
+    
+     
 
     public void disponibilidad(boolean a) {
         ArrayList<MesasClass> result = MesasClass.ListaMesas();
         for (int i = 0; i < result.size(); i++) {
             String b = result.get(i).getMesa();
-            if ("MESA1".equals(b)) {
+           if ("MESA1".equals(b)) {
                 Mesa1.setEnabled(a);
                 Mesa1.setBackground(Mesas);
                 orden1 = result.get(i).getOrden();
+                ordenmesa[1] = result.get(i).getOrdendia();
             } else if ("MESA2".equals(b)) {
                 Mesa2.setEnabled(a);
                 Mesa2.setBackground(Mesas);
                 orden2 = result.get(i).getOrden();
+                ordenmesa[2] = result.get(i).getOrdendia();
             } else if ("MESA3".equals(b)) {
                 Mesa3.setEnabled(a);
                 Mesa3.setBackground(Mesas);
                 orden3 = result.get(i).getOrden();
+                ordenmesa[3] = result.get(i).getOrdendia();
             } else if ("MESA4".equals(b)) {
                 Mesa4.setEnabled(a);
                 Mesa4.setBackground(Mesas);
                 orden4 = result.get(i).getOrden();
+                ordenmesa[4] = result.get(i).getOrdendia();
             } else if ("MESA5".equals(b)) {
                 Mesa5.setEnabled(a);
                 Mesa5.setBackground(Mesas);
                 orden5 = result.get(i).getOrden();
+                ordenmesa[5] = result.get(i).getOrdendia();
             } else if ("MESA6".equals(b)) {
                 Mesa6.setEnabled(a);
                 Mesa6.setBackground(Mesas);
                 orden6 = result.get(i).getOrden();
+                ordenmesa[6] = result.get(i).getOrdendia();
             } else if ("MESA7".equals(b)) {
                 Mesa7.setEnabled(a);
                 Mesa7.setBackground(Mesas);
                 orden7 = result.get(i).getOrden();
+                ordenmesa[7] = result.get(i).getOrdendia();
             } else if ("MESA8".equals(b)) {
                 Mesa8.setEnabled(a);
                 Mesa8.setBackground(Mesas);
                 orden8 = result.get(i).getOrden();
+                ordenmesa[8] = result.get(i).getOrdendia();
             } else if ("MESA9".equals(b)) {
                 Mesa9.setEnabled(a);
                 Mesa9.setBackground(Mesas);
                 orden9 = result.get(i).getOrden();
+                ordenmesa[9] = result.get(i).getOrdendia();
             } else if ("MESA10".equals(b)) {
                 Mesa10.setEnabled(a);
                 Mesa10.setBackground(Mesas);
                 orden10 = result.get(i).getOrden();
+                ordenmesa[10] = result.get(i).getOrdendia();
             } else if ("MESA11".equals(b)) {
                 Mesa11.setEnabled(a);
                 Mesa11.setBackground(Mesas);
                 orden11 = result.get(i).getOrden();
+                ordenmesa[11] = result.get(i).getOrdendia();
             } else if ("MESA12".equals(b)) {
                 Mesa12.setEnabled(a);
                 Mesa12.setBackground(Mesas);
                 orden12 = result.get(i).getOrden();
+                ordenmesa[12] = result.get(i).getOrdendia();
             } else if ("MESA13".equals(b)) {
                 Mesa13.setEnabled(a);
                 Mesa13.setBackground(Mesas);
                 orden13 = result.get(i).getOrden();
+                ordenmesa[13] = result.get(i).getOrdendia();
             } else if ("MESA14".equals(b)) {
                 Mesa14.setEnabled(a);
                 Mesa14.setBackground(Mesas);
                 orden14 = result.get(i).getOrden();
+                ordenmesa[14] = result.get(i).getOrdendia();
             } else if ("MESA15".equals(b)) {
                 Mesa15.setEnabled(a);
                 Mesa15.setBackground(Mesas);
                 orden15 = result.get(i).getOrden();
+                ordenmesa[15] = result.get(i).getOrdendia();
             } else if ("MESA16".equals(b)) {
                 Mesa16.setEnabled(a);
                 Mesa16.setBackground(Mesas);
                 orden16 = result.get(i).getOrden();
+                ordenmesa[16] = result.get(i).getOrdendia();
             } else if ("MESA17".equals(b)) {
                 Mesa17.setEnabled(a);
                 Mesa17.setBackground(Mesas);
                 orden17 = result.get(i).getOrden();
+                ordenmesa[17] = result.get(i).getOrdendia();
             } else if ("MESA18".equals(b)) {
                 Mesa18.setEnabled(a);
                 Mesa18.setBackground(Mesas);
                 orden18 = result.get(i).getOrden();
+                ordenmesa[18] = result.get(i).getOrdendia();
             } else if ("MESA19".equals(b)) {
                 Mesa19.setEnabled(a);
                 Mesa19.setBackground(Mesas);
                 orden19 = result.get(i).getOrden();
+                ordenmesa[19] = result.get(i).getOrdendia();
             } else if ("MESA20".equals(b)) {
                 Mesa20.setEnabled(a);
                 Mesa20.setBackground(Mesas);
                 orden20 = result.get(i).getOrden();
+                ordenmesa[20] = result.get(i).getOrdendia();
             }
             //System.out.println("MESA " +result.get(i).getMesa());
         }
@@ -1212,47 +1256,46 @@ public final class MesasSeguimiento extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 private void Etiquetas() {
-String texto1 = "<html><center><body>MESA 1<br>Orden No<br><font color='white'>"+orden1+"</font></body></center></html>";
-        ME1.setText(texto1);
-        String texto2 ="<html><center><body>MESA 2<br>Orden No<br><font color='white'>"+orden2+"</font></body></center></html>";
+String texto1 = "<html><center><body>MESA 1<br>Orden No<br><font color='white'>"+ordenmesa[1]+"</font></body></center></html>";
+         ME1.setText(texto1);
+        String texto2 ="<html><center><body>MESA 2<br>Orden No<br><font color='white'>"+ordenmesa[2]+"</font></body></center></html>";
         ME2.setText(texto2);
-        String texto3 ="<html><center><body>MESA 3<br>Orden No<br><font color='white'>"+orden3+"</font></body></center></html>";
+        String texto3 ="<html><center><body>MESA 3<br>Orden No<br><font color='white'>"+ordenmesa[3]+"</font></body></center></html>";
         ME3.setText(texto3);
-        String texto4 ="<html><center><body>MESA 4<br>Orden No<br><font color='white'>"+orden4+"</font></body></center></html>";
+        String texto4 ="<html><center><body>MESA 4<br>Orden No<br><font color='white'>"+ordenmesa[4]+"</font></body></center></html>";
         ME4.setText(texto4);
-        String texto5 ="<html><center><body>MESA 5<br>Orden No<br><font color='white'>"+orden5+"</font></body></center></html>";
+        String texto5 ="<html><center><body>MESA 5<br>Orden No<br><font color='white'>"+ordenmesa[5]+"</font></body></center></html>";
         ME5.setText(texto5);
-        String texto6 ="<html><center><body>MESA 6<br>Orden No<br><font color='white'>"+orden6+"</font></body></center></html>";
+        String texto6 ="<html><center><body>MESA 6<br>Orden No<br><font color='white'>"+ordenmesa[6]+"</font></body></center></html>";
         ME6.setText(texto6);
-        String texto7 ="<html><center><body>MESA 7<br>Orden No<br><font color='white'>"+orden7+"</font></body></center></html>";
+        String texto7 ="<html><center><body>MESA 7<br>Orden No<br><font color='white'>"+ordenmesa[7]+"</font></body></center></html>";
         ME7.setText(texto7);
-        String texto8 ="<html><center><body>MESA 8<br>Orden No<br><font color='white'>"+orden8+"</font></body></center></html>";
+        String texto8 ="<html><center><body>MESA 8<br>Orden No<br><font color='white'>"+ordenmesa[8]+"</font></body></center></html>";
         ME8.setText(texto8);
-        String texto9 ="<html><center><body>MESA 9<br>Orden No<br><font color='white'>"+orden9+"</font></body></center></html>";
+        String texto9 ="<html><center><body>MESA 9<br>Orden No<br><font color='white'>"+ordenmesa[9]+"</font></body></center></html>";
         ME9.setText(texto9);
-        String texto10 ="<html><center><body>MESA 10<br>Orden No<br><font color='white'>"+orden10+"</font></body></center></html>";
+        String texto10 ="<html><center><body>MESA 10<br>Orden No<br><font color='white'>"+ordenmesa[10]+"</font></body></center></html>";
         ME10.setText(texto10);
-        String texto11 ="<html><center><body>MESA 11<br>Orden No<br><font color='white'>"+orden11+"</font></body></center></html>";
+        String texto11 ="<html><center><body>MESA 11<br>Orden No<br><font color='white'>"+ordenmesa[11]+"</font></body></center></html>";
         ME11.setText(texto11);
-        String texto12 ="<html><center><body>MESA 12<br>Orden No<br><font color='white'>"+orden12+"</font></body></center></html>";
+        String texto12 ="<html><center><body>MESA 12<br>Orden No<br><font color='white'>"+ordenmesa[12]+"</font></body></center></html>";
         ME12.setText(texto12);
-        String texto13 ="<html><center><body>MESA 13<br>Orden No<br><font color='white'>"+orden13+"</font></body></center></html>";
+        String texto13 ="<html><center><body>MESA 13<br>Orden No<br><font color='white'>"+ordenmesa[13]+"</font></body></center></html>";
         ME13.setText(texto13);
-        String texto14 ="<html><center><body>MESA 14<br>Orden No<br><font color='white'>"+orden14+"</font></body></center></html>";
+        String texto14 ="<html><center><body>MESA 14<br>Orden No<br><font color='white'>"+ordenmesa[14]+"</font></body></center></html>";
         ME14.setText(texto14);
-        String texto15 ="<html><center><body>MESA 15<br>Orden No<br><font color='white'>"+orden15+"</font></body></center></html>";
+        String texto15 ="<html><center><body>MESA 15<br>Orden No<br><font color='white'>"+ordenmesa[15]+"</font></body></center></html>";
         ME15.setText(texto15);
-        String texto16 ="<html><center><body>MESA 16<br>Orden No<br><font color='white'>"+orden16+"</font></body></center></html>";
+        String texto16 ="<html><center><body>MESA 16<br>Orden No<br><font color='white'>"+ordenmesa[16]+"</font></body></center></html>";
         ME16.setText(texto16);
-        String texto17 ="<html><center><body>MESA 17<br>Orden No<br><font color='white'>"+orden17+"</font></body></center></html>";
+        String texto17 ="<html><center><body>MESA 17<br>Orden No<br><font color='white'>"+ordenmesa[17]+"</font></body></center></html>";
         ME17.setText(texto17);
-        String texto18 ="<html><center><body>MESA 18<br>Orden No<br><font color='white'>"+orden18+"</font></body></center></html>";
+        String texto18 ="<html><center><body>MESA 18<br>Orden No<br><font color='white'>"+ordenmesa[18]+"</font></body></center></html>";
         ME18.setText(texto18);
-        String texto19 ="<html><center><body>MESA 19<br>Orden No<br><font color='white'>"+orden19+"</font></body></center></html>";
+        String texto19 ="<html><center><body>MESA 19<br>Orden No<br><font color='white'>"+ordenmesa[19]+"</font></body></center></html>";
         ME19.setText(texto19);
-        String texto20 ="<html><center><body>MESA 20<br>Orden No<br><font color='white'>"+orden20+"</font></body></center></html>";
+        String texto20 ="<html><center><body>MESA 20<br>Orden No<br><font color='white'>"+ordenmesa[20]+"</font></body></center></html>";
         ME20.setText(texto20);
-
  }
 
 }

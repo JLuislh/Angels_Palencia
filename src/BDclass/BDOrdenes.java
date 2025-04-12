@@ -45,29 +45,30 @@ public class BDOrdenes {
         BDConexion conecta = new BDConexion();
         Connection con = conecta.getConexion();
         PreparedStatement smtp = null;
-        smtp =con.prepareStatement("insert into ventas (noorden,codigo,cantidad,total,estado) values(?,?,1,(select precio from productos where codigo =  "+t.getId_producto()+" ),1) ");
+        smtp =con.prepareStatement("insert into ventas (noorden,codigo,cantidad,total,estado,tipo) values(?,?,1,(select precio from productos where codigo =  "+t.getId_producto()+" ),1,?) ");
         try {
          smtp.setInt(1,t.getNoOrden());
          smtp.setInt(2,t.getId_producto());
+         smtp.setInt(3, t.getTipo());
          smtp.executeUpdate();
      } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "QUE MIERDA PASA ADENTRO =  "+e);}
        con.close();
        smtp.close(); 
         return t;
-       
     }
      
      
      public static ArrayList<InsertarProducto> ListarProductosPedidos (int a ) {
-        return SQL3(" SELECT cantidad,concat(p.DESCRIPCION1 ,' ', p.DESCRIPCION2) as Descripcion,precio,precio*CANTIDAD as total FROM ventas v inner join productos p on v.CODIGO = p.CODIGO where NOORDEN = "+a+";");    
+        return SQL3(" SELECT cantidad,concat(p.DESCRIPCION1 ,' ', p.DESCRIPCION2) as Descripcion,precio,precio*CANTIDAD as total FROM ventas v inner join productos p on v.CODIGO = p.CODIGO where NOORDEN = "+a);    
+        
  }  
 
 private static ArrayList<InsertarProducto> SQL3(String sql){
     ArrayList<InsertarProducto> list = new ArrayList<InsertarProducto>();
     BDConexion conecta = new BDConexion();
     Connection cn = conecta.getConexion();
-    
+    System.out.println("llega3");
         try {
             InsertarProducto t;
             Statement stmt = cn.createStatement();
@@ -75,8 +76,8 @@ private static ArrayList<InsertarProducto> SQL3(String sql){
             while (rs.next()){
                  t = new InsertarProducto();
                  t.setCantidad(rs.getInt("cantidad"));
-                 t.setDescripcion(rs.getString("DESCRIPCION").toUpperCase());
-                 t.setPrecio(rs.getDouble("Precio"));
+                 t.setDescripcion(rs.getString("Descripcion").toUpperCase());
+                 t.setPrecio(rs.getDouble("precio"));
                  t.setTotal(rs.getDouble("total"));
                  list.add(t);
             }
@@ -230,7 +231,7 @@ public static ArrayList<InsertarProducto> ProductosVentasDetalladoParaiso(String
  } 
     
     public static ArrayList<InsertarProducto> Ordenes(String Fecha) {
-        return Order("select noorden,Total,Fecha from ordenes where estado = 2 and date_format(fecha,'%d/%m/%Y')  ='"+Fecha+"'");    
+        return Order("select ordendia,Total,Fecha from ordenes where estado = 2 and date_format(fecha,'%d/%m/%Y')  ='"+Fecha+"'");    
  }  
  
     private static ArrayList<InsertarProducto> Order(String sql){
@@ -244,7 +245,7 @@ public static ArrayList<InsertarProducto> ProductosVentasDetalladoParaiso(String
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()){
                  t = new InsertarProducto();
-                 t.setNoOrden(rs.getInt("noorden"));
+                 t.setNoOrden(rs.getInt("ordendia"));
                  t.setTotal(rs.getDouble("TOTAL"));
                  t.setFecha(rs.getString("FECHA"));
                  list.add(t);
@@ -317,10 +318,6 @@ public static InsertarProducto BuscarTotal(String a) throws SQLException{
             return c;
 }
 
-
-
-
-
 public static ArrayList<InsertarProducto> ListarCodigosPedido (int a ) {
         return cod(" select codigo,cantidad from ventas where NOORDEN = "+a+";");    
  }  
@@ -348,11 +345,4 @@ private static ArrayList<InsertarProducto> cod(String sql){
         return list;
 }  
 
-
-
-
-
-    
-    
-    
 }

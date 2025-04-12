@@ -48,11 +48,13 @@ String descripcion1;	String descripcion2_1;	 String Precio1;  int codigo1;
  String descripcion18;	String descripcion2_18;	 String Precio18; int codigo18;
  String descripcion19;	String descripcion2_19;	 String Precio19; int codigo19;
  String descripcion20;	String descripcion2_20;	 String Precio20; int codigo20;
- 
+ String descripcion21;	String descripcion2_21;	 String Precio21; int codigo21;
+ String descripcion22;	String descripcion2_22;	 String Precio22; int codigo22;
  int noorden;
  int codigooreden;
  int existe = 0;
  int tipomenu = 0;
+ int tipo;
     /**
      * Creates new form Botellas
      */
@@ -90,17 +92,36 @@ String descripcion1;	String descripcion2_1;	 String Precio1;  int codigo1;
        P18.setBackground(Original);
        P19.setBackground(Original);
        P20.setBackground(Original);
-       
-      
+       P21.setBackground(Original);
+       P22.setBackground(Original);
      }
     });
+     
+     public  void BuscarTipo() {
+            try {
+                BDConexion conecta = new BDConexion();
+                Connection cn = conecta.getConexion();
+                java.sql.Statement stmt = cn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT COMBEB  FROM PRODUCTOS  WHERE  CODIGO ="+codigooreden );
+                while (rs.next()) {
+                    tipo = rs.getInt(1);
+                }
+                rs.close();
+                stmt.close();
+                cn.close();
+            } catch (Exception error) {
+                System.out.print(error);
+            }
+            
+        }  
     
     private void InsertarProductoPedido() {
-       
+        BuscarTipo();
         try {
             InsertarProducto p1 = new InsertarProducto();
             p1.setNoOrden(noorden);
             p1.setId_producto(codigooreden);
+            p1.setTipo(tipo);
             BDOrdenes.InsertarProducto_Pedido(p1);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "QUE MIERDA PASA= "+e);
@@ -126,7 +147,7 @@ String descripcion1;	String descripcion2_1;	 String Precio1;  int codigo1;
                  BDConexion conecta = new BDConexion();
                  Connection con = conecta.getConexion();
                  PreparedStatement smtp = null;
-                 smtp = con.prepareStatement("update VENTAS SET CANTIDAD = CANTIDAD+1, TOTAL = CANTIDAD*(SELECT PRECIO FROM productos WHERE CODIGO = "+codigooreden+") WHERE NOORDEN = "+noorden+" AND CODIGO = "+codigooreden);
+                 smtp = con.prepareStatement("update VENTAS SET CANTIDAD = CANTIDAD+1, TOTAL = CANTIDAD*(SELECT PRECIO FROM productos WHERE CODIGO = "+codigooreden+") WHERE NOORDEN = "+noorden+" and estado = 1 AND CODIGO = "+codigooreden);
                  smtp.executeUpdate();
                  con.close();
                  smtp.close();
@@ -156,7 +177,7 @@ String descripcion1;	String descripcion2_1;	 String Precio1;  int codigo1;
                 BDConexion conecta = new BDConexion();
                 Connection cn = conecta.getConexion();
                 java.sql.Statement stmt = cn.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT cantidad as EXISTE FROM ventas  WHERE NOORDEN =  "+noorden+" AND CODIGO ="+codigooreden );
+                ResultSet rs = stmt.executeQuery("SELECT cantidad as EXISTE FROM ventas  WHERE NOORDEN =  "+noorden+" and estado = 1 AND CODIGO ="+codigooreden );
                 while (rs.next()) {
                     existe = rs.getInt(1);
                 }
@@ -174,7 +195,7 @@ String descripcion1;	String descripcion2_1;	 String Precio1;  int codigo1;
                  BDConexion conecta = new BDConexion();
                  Connection con = conecta.getConexion();
                  PreparedStatement smtp = null;
-                 smtp = con.prepareStatement("update VENTAS SET CANTIDAD = CANTIDAD-1,Total = TOTAL-(SELECT PRECIO FROM productos WHERE CODIGO = "+codigooreden+") WHERE NOORDEN = "+noorden+" AND CODIGO = "+codigooreden);
+                 smtp = con.prepareStatement("update VENTAS SET CANTIDAD = CANTIDAD-1,Total = TOTAL-(SELECT PRECIO FROM productos WHERE CODIGO = "+codigooreden+") WHERE NOORDEN = "+noorden+" and estado = 1 AND CODIGO = "+codigooreden);
                  smtp.executeUpdate();
                  con.close();
                  smtp.close();
@@ -204,7 +225,7 @@ String descripcion1;	String descripcion2_1;	 String Precio1;  int codigo1;
             BDConexion conecta = new BDConexion();
             Connection con = conecta.getConexion();
             PreparedStatement ps = null;
-            ps= con.prepareStatement("delete from Ventas where noorden="+noorden+" and codigo = "+codigooreden);
+            ps= con.prepareStatement("delete from Ventas where noorden="+noorden+" and estado = 1 and codigo = "+codigooreden);
             ps.executeUpdate();
             con.close();
             ps.close();
@@ -279,6 +300,10 @@ String descripcion1;	String descripcion2_1;	 String Precio1;  int codigo1;
         BO19 = new javax.swing.JLabel();
         P20 = new ClassAngels.PanelRound();
         BO20 = new javax.swing.JLabel();
+        P21 = new ClassAngels.PanelRound();
+        BO21 = new javax.swing.JLabel();
+        P22 = new ClassAngels.PanelRound();
+        BO22 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(51, 153, 255));
         setPreferredSize(new java.awt.Dimension(1024, 440));
@@ -914,6 +939,60 @@ String descripcion1;	String descripcion2_1;	 String Precio1;  int codigo1;
             .addComponent(BO20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
         );
 
+        P21.setBackground(new java.awt.Color(204, 255, 102));
+        P21.setMinimumSize(new java.awt.Dimension(100, 75));
+        P21.setRoundBottomLeft(20);
+        P21.setRoundBottomRight(20);
+        P21.setRoundTopLeft(20);
+        P21.setRoundTopRight(20);
+
+        BO21.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        BO21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        BO21.setText("21");
+        BO21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BO21MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout P21Layout = new javax.swing.GroupLayout(P21);
+        P21.setLayout(P21Layout);
+        P21Layout.setHorizontalGroup(
+            P21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(BO21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        );
+        P21Layout.setVerticalGroup(
+            P21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(BO21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+        );
+
+        P22.setBackground(new java.awt.Color(204, 255, 102));
+        P22.setMinimumSize(new java.awt.Dimension(100, 75));
+        P22.setRoundBottomLeft(20);
+        P22.setRoundBottomRight(20);
+        P22.setRoundTopLeft(20);
+        P22.setRoundTopRight(20);
+
+        BO22.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        BO22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        BO22.setText("22");
+        BO22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BO22MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout P22Layout = new javax.swing.GroupLayout(P22);
+        P22.setLayout(P22Layout);
+        P22Layout.setHorizontalGroup(
+            P22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(BO22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        );
+        P22Layout.setVerticalGroup(
+            P22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(BO22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -927,18 +1006,24 @@ String descripcion1;	String descripcion2_1;	 String Precio1;  int codigo1;
                 .addComponent(P19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(P20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(430, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(P21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(P22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(200, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(P22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(P21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(P20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(P19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(P18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(P17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -959,7 +1044,7 @@ String descripcion1;	String descripcion2_1;	 String Precio1;  int codigo1;
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("");
@@ -1324,6 +1409,42 @@ String descripcion1;	String descripcion2_1;	 String Precio1;  int codigo1;
             timer.start();
        }
     }//GEN-LAST:event_BO20MouseClicked
+
+    private void BO21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BO21MouseClicked
+        if ((evt.getModifiers() & 4) !=0){
+            codigooreden= codigo21;
+            BuscarExistencia();
+            if(existe >= 2){UpdateCantidadMenos();} else if (existe == 1){eliminarProducto();} else{JOptionPane.showMessageDialog(this, "Aun no tienes agregado este producto");}
+            P21.setBackground(Color.darkGray);
+            timer.setRepeats(false);
+            timer.start();
+          }else{
+            codigooreden = codigo21;
+            BuscarExistencia();
+            if(existe == 0){InsertarProductoPedido();}else{UpdateCantidad();}
+            P21.setBackground(Color.GREEN);
+            timer.setRepeats(false);
+            timer.start();
+       }
+    }//GEN-LAST:event_BO21MouseClicked
+
+    private void BO22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BO22MouseClicked
+        if ((evt.getModifiers() & 4) !=0){
+            codigooreden= codigo22;
+            BuscarExistencia();
+            if(existe >= 2){UpdateCantidadMenos();} else if (existe == 1){eliminarProducto();} else{JOptionPane.showMessageDialog(this, "Aun no tienes agregado este producto");}
+            P22.setBackground(Color.darkGray);
+            timer.setRepeats(false);
+            timer.start();
+          }else{
+            codigooreden = codigo22;
+            BuscarExistencia();
+            if(existe == 0){InsertarProductoPedido();}else{UpdateCantidad();}
+            P22.setBackground(Color.GREEN);
+            timer.setRepeats(false);
+            timer.start();
+       }
+    }//GEN-LAST:event_BO22MouseClicked
 private void nombres(){
     ArrayList<EtiquetasClass> result = EtiquetasClass.ListaEtiquetasBotellas();
         for (int i = 0; i < result.size(); i++) {
@@ -1389,6 +1510,12 @@ private void nombres(){
             else if (274== codigo){
              descripcion20 = result.get(i).getDescripcion1().toUpperCase(); descripcion2_20 = result.get(i).getDescripcion2().toUpperCase(); Precio20 = result.get(i).getPrecio();codigo20 = result.get(i).getCodigo();
             }
+            else if (290== codigo){
+             descripcion21 = result.get(i).getDescripcion1().toUpperCase(); descripcion2_21 = result.get(i).getDescripcion2().toUpperCase(); Precio21 = result.get(i).getPrecio();codigo21 = result.get(i).getCodigo();
+            }
+            else if (312== codigo){
+             descripcion22 = result.get(i).getDescripcion1().toUpperCase(); descripcion2_22 = result.get(i).getDescripcion2().toUpperCase(); Precio22 = result.get(i).getPrecio();codigo22 = result.get(i).getCodigo();
+            }
         }
   }
 
@@ -1406,6 +1533,8 @@ private void nombres(){
     private javax.swing.JLabel BO19;
     private javax.swing.JLabel BO2;
     private javax.swing.JLabel BO20;
+    private javax.swing.JLabel BO21;
+    private javax.swing.JLabel BO22;
     private javax.swing.JLabel BO3;
     private javax.swing.JLabel BO4;
     private javax.swing.JLabel BO5;
@@ -1426,6 +1555,8 @@ private void nombres(){
     private ClassAngels.PanelRound P19;
     private ClassAngels.PanelRound P2;
     private ClassAngels.PanelRound P20;
+    private ClassAngels.PanelRound P21;
+    private ClassAngels.PanelRound P22;
     private ClassAngels.PanelRound P3;
     private ClassAngels.PanelRound P4;
     private ClassAngels.PanelRound P5;
@@ -1477,6 +1608,10 @@ private void nombres(){
         BO19.setText(texto19);
          String texto20 ="<html><center><body>"+descripcion20+"<br>"+descripcion2_20+"<br><font color='RED'>Q"+Precio20+"</font></body></center></html>";
         BO20.setText(texto20);
+        String texto21 ="<html><center><body>"+descripcion21+"<br>"+descripcion2_21+"<br><font color='RED'>Q"+Precio21+"</font></body></center></html>";
+        BO21.setText(texto21);
+        String texto22 ="<html><center><body>"+descripcion22+"<br>"+descripcion2_22+"<br><font color='RED'>Q"+Precio22+"</font></body></center></html>";
+        BO22.setText(texto22);
         
 }
 }

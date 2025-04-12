@@ -15,6 +15,54 @@ public class Productos {
     private String precio;
     private int codigo;
     private int cantidad;
+    private int NoOrden;
+    private String Fecha;
+    private Double Total;
+    private int NoMesa;
+    private int OrdenDia;
+
+    public int getNoMesa() {
+        return NoMesa;
+    }
+
+    public void setNoMesa(int NoMesa) {
+        this.NoMesa = NoMesa;
+    }
+
+    public int getOrdenDia() {
+        return OrdenDia;
+    }
+
+    public void setOrdenDia(int OrdenDia) {
+        this.OrdenDia = OrdenDia;
+    }
+
+    
+    public int getNoOrden() {
+        return NoOrden;
+    }
+
+    public void setNoOrden(int NoOrden) {
+        this.NoOrden = NoOrden;
+    }
+
+    public String getFecha() {
+        return Fecha;
+    }
+
+    public void setFecha(String Fecha) {
+        this.Fecha = Fecha;
+    }
+
+    public Double getTotal() {
+        return Total;
+    }
+
+    public void setTotal(Double Total) {
+        this.Total = Total;
+    }
+    
+    
 
     public int getCantidad() {
         return cantidad;

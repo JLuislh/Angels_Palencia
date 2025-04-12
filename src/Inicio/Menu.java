@@ -42,6 +42,7 @@ public class Menu extends javax.swing.JFrame {
      public static int noorden;
      int nomesa;
      int tipomenu = 0;
+     int ordendia;
     /**
      * Creates new form Menu
      * @param a
@@ -52,8 +53,8 @@ public class Menu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.nomesa = a;
         Menu.noorden = b;
-       
-        Ordentxt.setText(String.valueOf(b));
+        BuscarOrdenDia();
+        Ordentxt.setText(String.valueOf(ordendia));
         mesatxt.setText(String.valueOf(a));
         
         String texto7 = "<html><center><body>CALDOS<br>PAL ANTOJO</body></center></html>";
@@ -71,6 +72,24 @@ public class Menu extends javax.swing.JFrame {
         String texto6 = "<html><center><body>EXTRAS<br>MICHELADAS</body></center></html>";
         Titulo7.setText(texto6);
     }
+    
+    public void BuscarOrdenDia() {
+            try {
+                BDConexion conecta = new BDConexion();
+                Connection cn = conecta.getConexion();
+                java.sql.Statement stmt = cn.createStatement();
+                ResultSet rs = stmt.executeQuery("select ordendia  from ordenes where date_format(fecha,'%d/%m/%Y') = date_format(now(),'%d/%m/%Y') and NOORDEN = "+noorden);
+                while (rs.next()) {
+                      ordendia = (rs.getInt(1));
+                }
+                rs.close();
+                stmt.close();
+                cn.close();
+            } catch (Exception error) {
+                System.out.print(error);
+            }
+        }
+    
     
     private void eliminarOrden(){
         try {
@@ -130,12 +149,12 @@ public class Menu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         Total = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1024, 684));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(1024, 684));
@@ -413,7 +432,7 @@ public class Menu extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(Pedidos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 740, 190));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 740, 200));
 
         jPanel6.setBackground(new java.awt.Color(153, 204, 255));
         jPanel6.setMinimumSize(new java.awt.Dimension(274, 180));
@@ -446,17 +465,28 @@ public class Menu extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(255, 255, 153));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Print.png"))); // NOI18N
-        jButton3.setText("GENERAR ORDEN");
+        jButton3.setText("SALIR");
         jButton3.setPreferredSize(new java.awt.Dimension(75, 25));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel6.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 160, 40));
+        jPanel6.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 110, 40));
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 490, -1, 190));
+        jButton4.setBackground(new java.awt.Color(255, 255, 153));
+        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Print.png"))); // NOI18N
+        jButton4.setText("GENERAR ORDEN");
+        jButton4.setPreferredSize(new java.awt.Dimension(75, 25));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 150, 40));
+
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 490, -1, 200));
         jPanel6.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -542,13 +572,27 @@ public class Menu extends javax.swing.JFrame {
         try {
             JasperReport jasperReport=(JasperReport)JRLoader.loadObjectFromFile("C:\\Reportes\\ANGELS\\TiketAngels.jasper");
             Map parametros= new HashMap();
-            parametros.put("ID_ORDEN", Integer.parseInt(Ordentxt.getText()));
+            parametros.put("ID_ORDEN", noorden);
             JasperPrint print = JasperFillManager.fillReport(jasperReport,parametros, conexion);
             JasperPrintManager.printReport(print, true);
         } catch (Exception e) {System.out.println("F"+e);
            JOptionPane.showMessageDialog(null, "ERROR EJECUTAR REPORTES =  "+e);
         }
     }
+    
+    private void CambiarVentaImprimir(){
+        try {
+            BDConexion conecta = new BDConexion();
+            Connection con = conecta.getConexion();
+            PreparedStatement ps = null;
+            ps= con.prepareStatement("UPDATE ventas SET estado = 2 where noorden="+noorden);
+            ps.executeUpdate();
+            con.close();
+            ps.close();
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null,"ERROr = "+ex);
+        }
+ }
     
     
     
@@ -627,7 +671,8 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_Titulo8MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       imprimir();
+       
+       CambiarVentaImprimir();
        Ordenes F = new Ordenes();
        F.setVisible(true);
        this.dispose();
@@ -642,6 +687,14 @@ public class Menu extends javax.swing.JFrame {
     PanelMenu.revalidate();
     PanelMenu.repaint();
     }//GEN-LAST:event_Titulo7MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        imprimir();
+        CambiarVentaImprimir();
+       Ordenes F = new Ordenes();
+       F.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -704,6 +757,7 @@ public class Menu extends javax.swing.JFrame {
     public static javax.swing.JTextField Total;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

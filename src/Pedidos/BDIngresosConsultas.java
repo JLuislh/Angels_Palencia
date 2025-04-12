@@ -19,8 +19,8 @@ import javax.swing.JOptionPane;
  */
 public class BDIngresosConsultas {
 
-    public static ArrayList<ClassProductos> ListarProductos(int p) {
-        return OrderLuis("SELECT id_producto,descripcion,medida  FROM PRODUCTOS WHERE  ID_PRODUCTO not in(SELECT ID_PRODUCTO FROM PRODUCTOS_PEDIDO WHERE ID_PEDIDO = " + p + ") order by familia,DESCRIPCION;");
+    public static ArrayList<ClassProductos> ListarProductos(int p,String a) {
+        return OrderLuis("SELECT id_producto,descripcion,medida  FROM PRODUCTOS WHERE  ID_PRODUCTO not in(SELECT ID_PRODUCTO FROM PRODUCTOS_PEDIDO WHERE ID_PEDIDO = " + p + ") and descripcion LIKE '%"+a+"%' order by familia,DESCRIPCION;");
     }
    
 

@@ -26,7 +26,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="35" max="32767" attributes="0"/>
                   </Group>
                   <Component id="jPanel1" max="32767" attributes="0"/>
               </Group>
@@ -64,48 +64,49 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="P11" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="P28" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="P29" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="P30" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="P31" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="P2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="P32" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="P1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="P3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="P4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="P5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="P6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="P7" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="P8" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="P1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="P3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="P4" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="P5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="P6" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="P7" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="P8" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="P9" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="P10" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="P11" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="P33" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="P28" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="P29" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="P30" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="P31" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="P2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="P32" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="P33" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="P34" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="P35" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -125,19 +126,21 @@
                       <Component id="P4" min="-2" max="-2" attributes="0"/>
                       <Component id="P3" min="-2" max="-2" attributes="0"/>
                       <Component id="P1" min="-2" max="-2" attributes="0"/>
+                      <Component id="P11" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="P28" min="-2" max="-2" attributes="0"/>
                       <Component id="P29" min="-2" max="-2" attributes="0"/>
                       <Component id="P30" min="-2" max="-2" attributes="0"/>
                       <Component id="P31" min="-2" max="-2" attributes="0"/>
                       <Component id="P2" min="-2" max="-2" attributes="0"/>
-                      <Component id="P11" min="-2" max="-2" attributes="0"/>
                       <Component id="P32" min="-2" max="-2" attributes="0"/>
                       <Component id="P33" min="-2" max="-2" attributes="0"/>
+                      <Component id="P34" min="-2" max="-2" attributes="0"/>
+                      <Component id="P35" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                  <EmptySpace pref="22" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -152,7 +155,7 @@
               <Dimension value="[100, 75]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 65]"/>
+              <Dimension value="[90, 65]"/>
             </Property>
             <Property name="roundBottomLeft" type="int" value="20"/>
             <Property name="roundBottomRight" type="int" value="20"/>
@@ -163,7 +166,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AMA1" alignment="0" pref="100" max="32767" attributes="0"/>
+                  <Component id="AMA1" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -196,7 +199,7 @@
               <Dimension value="[100, 75]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 65]"/>
+              <Dimension value="[90, 65]"/>
             </Property>
             <Property name="roundBottomLeft" type="int" value="20"/>
             <Property name="roundBottomRight" type="int" value="20"/>
@@ -207,7 +210,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AMA2" alignment="0" pref="100" max="32767" attributes="0"/>
+                  <Component id="AMA2" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -240,7 +243,7 @@
               <Dimension value="[100, 75]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 65]"/>
+              <Dimension value="[90, 65]"/>
             </Property>
             <Property name="roundBottomLeft" type="int" value="20"/>
             <Property name="roundBottomRight" type="int" value="20"/>
@@ -251,7 +254,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AMA3" alignment="1" pref="100" max="32767" attributes="0"/>
+                  <Component id="AMA3" alignment="1" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -284,7 +287,7 @@
               <Dimension value="[100, 75]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 65]"/>
+              <Dimension value="[90, 65]"/>
             </Property>
             <Property name="roundBottomLeft" type="int" value="20"/>
             <Property name="roundBottomRight" type="int" value="20"/>
@@ -295,7 +298,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AMA4" alignment="0" pref="100" max="32767" attributes="0"/>
+                  <Component id="AMA4" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -328,7 +331,7 @@
               <Dimension value="[100, 75]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 65]"/>
+              <Dimension value="[90, 65]"/>
             </Property>
             <Property name="roundBottomLeft" type="int" value="20"/>
             <Property name="roundBottomRight" type="int" value="20"/>
@@ -339,7 +342,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AMA5" alignment="0" pref="100" max="32767" attributes="0"/>
+                  <Component id="AMA5" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -372,7 +375,7 @@
               <Dimension value="[100, 75]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 65]"/>
+              <Dimension value="[90, 65]"/>
             </Property>
             <Property name="roundBottomLeft" type="int" value="20"/>
             <Property name="roundBottomRight" type="int" value="20"/>
@@ -383,7 +386,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AMA6" alignment="0" pref="100" max="32767" attributes="0"/>
+                  <Component id="AMA6" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -416,7 +419,7 @@
               <Dimension value="[100, 75]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 65]"/>
+              <Dimension value="[90, 65]"/>
             </Property>
             <Property name="roundBottomLeft" type="int" value="20"/>
             <Property name="roundBottomRight" type="int" value="20"/>
@@ -427,7 +430,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AMA7" alignment="0" pref="100" max="32767" attributes="0"/>
+                  <Component id="AMA7" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -460,7 +463,7 @@
               <Dimension value="[100, 75]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 65]"/>
+              <Dimension value="[90, 65]"/>
             </Property>
             <Property name="roundBottomLeft" type="int" value="20"/>
             <Property name="roundBottomRight" type="int" value="20"/>
@@ -471,7 +474,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AMA8" alignment="0" pref="100" max="32767" attributes="0"/>
+                  <Component id="AMA8" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -504,7 +507,7 @@
               <Dimension value="[100, 75]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 65]"/>
+              <Dimension value="[90, 65]"/>
             </Property>
             <Property name="roundBottomLeft" type="int" value="20"/>
             <Property name="roundBottomRight" type="int" value="20"/>
@@ -515,7 +518,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AMA9" alignment="0" pref="100" max="32767" attributes="0"/>
+                  <Component id="AMA9" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -545,7 +548,7 @@
               <Color blue="66" green="ff" red="cc" type="rgb"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 65]"/>
+              <Dimension value="[90, 65]"/>
             </Property>
             <Property name="roundBottomLeft" type="int" value="20"/>
             <Property name="roundBottomRight" type="int" value="20"/>
@@ -556,7 +559,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AMA10" alignment="0" pref="100" max="32767" attributes="0"/>
+                  <Component id="AMA10" alignment="0" pref="90" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -586,7 +589,7 @@
               <Color blue="66" green="ff" red="cc" type="rgb"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 65]"/>
+              <Dimension value="[90, 65]"/>
             </Property>
             <Property name="roundBottomLeft" type="int" value="20"/>
             <Property name="roundBottomRight" type="int" value="20"/>
@@ -597,7 +600,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AMA11" alignment="0" pref="100" max="32767" attributes="0"/>
+                  <Component id="AMA11" alignment="0" pref="90" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -627,7 +630,7 @@
               <Color blue="66" green="ff" red="cc" type="rgb"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 65]"/>
+              <Dimension value="[90, 65]"/>
             </Property>
             <Property name="roundBottomLeft" type="int" value="20"/>
             <Property name="roundBottomRight" type="int" value="20"/>
@@ -638,7 +641,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AMA12" alignment="0" pref="100" max="32767" attributes="0"/>
+                  <Component id="AMA12" alignment="0" pref="90" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -668,7 +671,7 @@
               <Color blue="66" green="ff" red="cc" type="rgb"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 65]"/>
+              <Dimension value="[90, 65]"/>
             </Property>
             <Property name="roundBottomLeft" type="int" value="20"/>
             <Property name="roundBottomRight" type="int" value="20"/>
@@ -679,7 +682,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AMA13" alignment="0" pref="100" max="32767" attributes="0"/>
+                  <Component id="AMA13" alignment="0" pref="90" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -709,7 +712,7 @@
               <Color blue="66" green="ff" red="cc" type="rgb"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 65]"/>
+              <Dimension value="[90, 65]"/>
             </Property>
             <Property name="roundBottomLeft" type="int" value="20"/>
             <Property name="roundBottomRight" type="int" value="20"/>
@@ -720,7 +723,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AMA14" alignment="0" pref="100" max="32767" attributes="0"/>
+                  <Component id="AMA14" alignment="0" pref="90" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -750,7 +753,7 @@
               <Color blue="66" green="ff" red="cc" type="rgb"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 65]"/>
+              <Dimension value="[90, 65]"/>
             </Property>
             <Property name="roundBottomLeft" type="int" value="20"/>
             <Property name="roundBottomRight" type="int" value="20"/>
@@ -761,7 +764,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AMA15" alignment="0" pref="100" max="32767" attributes="0"/>
+                  <Component id="AMA15" alignment="0" pref="90" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -791,7 +794,7 @@
               <Color blue="66" green="ff" red="cc" type="rgb"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 65]"/>
+              <Dimension value="[90, 65]"/>
             </Property>
             <Property name="roundBottomLeft" type="int" value="20"/>
             <Property name="roundBottomRight" type="int" value="20"/>
@@ -802,7 +805,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AMA16" alignment="0" pref="100" max="32767" attributes="0"/>
+                  <Component id="AMA16" alignment="0" pref="90" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -832,7 +835,7 @@
               <Color blue="66" green="ff" red="cc" type="rgb"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 65]"/>
+              <Dimension value="[90, 65]"/>
             </Property>
             <Property name="roundBottomLeft" type="int" value="20"/>
             <Property name="roundBottomRight" type="int" value="20"/>
@@ -843,7 +846,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AMA17" alignment="0" pref="100" max="32767" attributes="0"/>
+                  <Component id="AMA17" alignment="0" pref="90" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -863,6 +866,88 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AMA17MouseClicked"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="ClassAngels.PanelRound" name="P34">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="ff" red="cc" type="rgb"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[90, 65]"/>
+            </Property>
+            <Property name="roundBottomLeft" type="int" value="20"/>
+            <Property name="roundBottomRight" type="int" value="20"/>
+            <Property name="roundTopLeft" type="int" value="20"/>
+            <Property name="roundTopRight" type="int" value="20"/>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="AMA18" alignment="0" pref="90" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="AMA18" alignment="0" pref="65" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="AMA18">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="12" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="34"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AMA18MouseClicked"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="ClassAngels.PanelRound" name="P35">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="ff" red="cc" type="rgb"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[90, 65]"/>
+            </Property>
+            <Property name="roundBottomLeft" type="int" value="20"/>
+            <Property name="roundBottomRight" type="int" value="20"/>
+            <Property name="roundTopLeft" type="int" value="20"/>
+            <Property name="roundTopRight" type="int" value="20"/>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="AMA19" alignment="0" pref="90" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="AMA19" alignment="0" pref="65" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="AMA19">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="12" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="35"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AMA19MouseClicked"/>
               </Events>
             </Component>
           </SubComponents>

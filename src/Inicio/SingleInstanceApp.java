@@ -3,48 +3,41 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package Inicio;
-import java.io.File;
 import java.io.IOException;
+import java.net.ServerSocket;
+import javax.swing.JOptionPane;
 
-
-/**
- *
- * @author it
- */
 public class SingleInstanceApp {
 
-    /**
-     * @param args the command line arguments
-     */
+    private static final int PORT = 1000; // Puerto único para tu aplicación
+
     public static void main(String[] args) {
-       File lockFile = new File("app.lock");
-        
-         if (lockFile.exists()) {
-            System.out.println("La aplicación ya está en ejecución.");
-            System.exit(0);  // Salir si ya está en ejecución
+        // Intenta abrir un socket en el puerto único
+        try (ServerSocket socket = new ServerSocket(PORT)) {
+            System.out.println("Aplicación iniciada. No hay otras instancias en ejecución.");
+             iniciarAplicacion();
+             
+             
+             synchronized (SingleInstanceApp.class) {
+                try {
+                    SingleInstanceApp.class.wait(); // Bloquea el hilo principal
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            } 
+             
+             
+        } catch (IOException e) {
+            // Si no se puede abrir el socket, significa que ya hay una instancia en ejecución
+            System.err.println("Ya hay una instancia de la aplicación en ejecución.");
+            System.exit(1); // Salir del programa
         }
+    }
 
-        // Crear el archivo de bloqueo
-        try {
-            if (lockFile.createNewFile()) {
-                System.out.println("Aplicación iniciada.");
-            } else {
-                System.out.println("Error al crear archivo de bloqueo.");
-                System.exit(1);
-            }
-
+    private static void iniciarAplicacion() {
             Ordenes F = new Ordenes();
             F.setVisible(true);
-            
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
-
-        // Eliminar archivo de bloqueo al cerrar la aplicación
-        lockFile.deleteOnExit();
-    
+           
+        System.out.println("Tu aplicación está en funcionamiento...");
     }
-    
 }

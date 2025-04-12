@@ -14,15 +14,22 @@ import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableColumn;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
 
 /**
  *
  * @author jluis
  */
 public class Gastos extends javax.swing.JFrame {
-
+    String Fecha;
     String Fechain;
     String Fechagastos;
 
@@ -145,6 +152,7 @@ public class Gastos extends javax.swing.JFrame {
         Gastos = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         SUMATOTAL = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         DESCRIPCION = new javax.swing.JTextField();
@@ -184,6 +192,14 @@ public class Gastos extends javax.swing.JFrame {
 
         jLabel5.setText("TOTAL");
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Print.png"))); // NOI18N
+        jButton3.setText("IMPRIMIR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -198,7 +214,8 @@ public class Gastos extends javax.swing.JFrame {
                         .addComponent(jButton2)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SUMATOTAL, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -216,7 +233,8 @@ public class Gastos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(SUMATOTAL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SUMATOTAL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -415,6 +433,28 @@ public class Gastos extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel7MouseClicked
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if(FECHABUSCAR.getDate() != null){
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            Fecha = df.format(FECHABUSCAR.getDate());
+            BDConexion con= new BDConexion();
+            Connection conexion= con.getConexion();
+            try {
+                JasperReport jasperReport=(JasperReport)JRLoader.loadObjectFromFile("C:\\Reportes\\ANGELS\\ImprimirGastos.jasper");
+                Map parametros= new HashMap();
+                parametros.put("FECHA", Fecha);
+                JasperPrint print = JasperFillManager.fillReport(jasperReport,parametros, conexion);
+                JasperPrintManager.printReport(print, true);
+            } catch (Exception e) {System.out.println("F"+e);
+                JOptionPane.showMessageDialog(null, "ERROR EJECUTAR REPORTES =  "+e);
+            }
+        }else{
+
+            JOptionPane.showMessageDialog(null, "INGRESE UNA FECHA...");
+
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -461,6 +501,7 @@ public class Gastos extends javax.swing.JFrame {
     private javax.swing.JTextField TOTAL;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

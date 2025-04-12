@@ -43,6 +43,7 @@ public class MenuParaLlevar extends javax.swing.JFrame {
      public static int noorden;
      int tipomenu = 2;
      String Query;
+     int ordendia;
     /**
      * Creates new form Menu
      * @param a
@@ -52,10 +53,8 @@ public class MenuParaLlevar extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         MenuParaLlevar.noorden = a;
-        
-        
-        
-        Ordentxt.setText(String.valueOf(a));
+        BuscarOrdenDia();
+        Ordentxt.setText(String.valueOf(ordendia));
         String texto7 = "<html><center><body>CALDOS<br>PAL ANTOJO</body></center></html>";
         Titulo1.setText(texto7);
         String texto1 = "<html><center><body>HAMBURGUEZAS<br>FUERA DEL MAR</body></center></html>";
@@ -71,8 +70,24 @@ public class MenuParaLlevar extends javax.swing.JFrame {
         String texto6 = "<html><center><body>EXTRAS<br>MICHELADAS</body></center></html>";
         Titulo8.setText(texto6);
         ListarProductosPedidos();
-        
     }
+    private void BuscarOrdenDia() {
+            try {
+                BDConexion conecta = new BDConexion();
+                Connection cn = conecta.getConexion();
+                java.sql.Statement stmt = cn.createStatement();
+                ResultSet rs = stmt.executeQuery("select ordendia  from ordenes where date_format(fecha,'%d/%m/%Y') = date_format(now(),'%d/%m/%Y') and NOORDEN = "+noorden);
+                while (rs.next()) {
+                      ordendia= (rs.getInt(1));
+                }
+                rs.close();
+                stmt.close();
+                cn.close();
+            } catch (Exception error) {
+                System.out.print(error);
+            }
+        }
+    
     
     private void cobrarOrden(){
         try {
@@ -86,7 +101,22 @@ public class MenuParaLlevar extends javax.swing.JFrame {
         } catch (SQLException ex) {
            JOptionPane.showMessageDialog(null,"ERROr = "+ex);
         }
+         CambiarVentaImprimir();
  }
+    
+ private void CambiarVentaImprimir(){
+        try {
+            BDConexion conecta = new BDConexion();
+            Connection con = conecta.getConexion();
+            PreparedStatement ps = null;
+            ps= con.prepareStatement("UPDATE ventas SET estado = 2 where noorden="+noorden);
+            ps.executeUpdate();
+            con.close();
+            ps.close();
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null,"ERROr = "+ex);
+        }
+ }   
     
   /*  private void descargarInventario(){
      
@@ -765,7 +795,7 @@ public class MenuParaLlevar extends javax.swing.JFrame {
         try {
             JasperReport jasperReport=(JasperReport)JRLoader.loadObjectFromFile("C:\\Reportes\\ANGELS\\TiketAngelsPreCuenta.jasper");
             Map parametros= new HashMap();
-            parametros.put("ID_ORDEN", Integer.parseInt(Ordentxt.getText()));
+            parametros.put("ID_ORDEN", noorden);
             JasperPrint print = JasperFillManager.fillReport(jasperReport,parametros, conexion);
             JasperPrintManager.printReport(print, true);
         } catch (Exception e) {System.out.println("F"+e);

@@ -56,6 +56,7 @@ public class CaldosAntojos extends javax.swing.JPanel {
  int codigooreden;
  int existe = 0;
  int tipomenu = 0;
+ int tipo;
     /**
      * Creates new form CaldosAntojos
      * @param a
@@ -69,14 +70,31 @@ public class CaldosAntojos extends javax.swing.JPanel {
         this.tipomenu = b;
     }
     
-    
+     public  void BuscarTipo() {
+            try {
+                BDConexion conecta = new BDConexion();
+                Connection cn = conecta.getConexion();
+                java.sql.Statement stmt = cn.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT COMBEB  FROM PRODUCTOS  WHERE  CODIGO ="+codigooreden );
+                while (rs.next()) {
+                    tipo = rs.getInt(1);
+                }
+                rs.close();
+                stmt.close();
+                cn.close();
+            } catch (Exception error) {
+                System.out.print(error);
+            }
+            
+        } 
     
     private void InsertarProductoPedido() {
-       
+        BuscarTipo();
         try {
             InsertarProducto p1 = new InsertarProducto();
             p1.setNoOrden(noorden);
             p1.setId_producto(codigooreden);
+            p1.setTipo(tipo);
             BDOrdenes.InsertarProducto_Pedido(p1);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "QUE MIERDA PASA= "+e);
@@ -148,7 +166,7 @@ public class CaldosAntojos extends javax.swing.JPanel {
                  BDConexion conecta = new BDConexion();
                  Connection con = conecta.getConexion();
                  PreparedStatement smtp = null;
-                 smtp = con.prepareStatement("update VENTAS SET CANTIDAD = CANTIDAD+1, TOTAL = CANTIDAD*(SELECT PRECIO FROM productos WHERE CODIGO = "+codigooreden+") WHERE NOORDEN = "+noorden+" AND CODIGO = "+codigooreden);
+                 smtp = con.prepareStatement("update VENTAS SET CANTIDAD = CANTIDAD+1, TOTAL = CANTIDAD*(SELECT PRECIO FROM productos WHERE CODIGO = "+codigooreden+") WHERE NOORDEN = "+noorden+" AND ESTADO = 1 AND CODIGO = "+codigooreden);
                  smtp.executeUpdate();
                  con.close();
                  smtp.close();
@@ -178,7 +196,7 @@ public class CaldosAntojos extends javax.swing.JPanel {
                 BDConexion conecta = new BDConexion();
                 Connection cn = conecta.getConexion();
                 java.sql.Statement stmt = cn.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT cantidad as EXISTE FROM ventas  WHERE NOORDEN =  "+noorden+" AND CODIGO ="+codigooreden );
+                ResultSet rs = stmt.executeQuery("SELECT cantidad as EXISTE FROM ventas  WHERE NOORDEN =  "+noorden+" AND estado = 1 AND  CODIGO ="+codigooreden );
                 while (rs.next()) {
                     existe = rs.getInt(1);
                 }
@@ -196,7 +214,7 @@ public class CaldosAntojos extends javax.swing.JPanel {
                  BDConexion conecta = new BDConexion();
                  Connection con = conecta.getConexion();
                  PreparedStatement smtp = null;
-                 smtp = con.prepareStatement("update VENTAS SET CANTIDAD = CANTIDAD-1,Total = TOTAL-(SELECT PRECIO FROM productos WHERE CODIGO = "+codigooreden+") WHERE NOORDEN = "+noorden+" AND CODIGO = "+codigooreden);
+                 smtp = con.prepareStatement("update VENTAS SET CANTIDAD = CANTIDAD-1,Total = TOTAL-(SELECT PRECIO FROM productos WHERE CODIGO = "+codigooreden+") WHERE NOORDEN = "+noorden+" AND estado = 1 AND CODIGO = "+codigooreden);
                  smtp.executeUpdate();
                  con.close();
                  smtp.close();
@@ -226,7 +244,7 @@ public class CaldosAntojos extends javax.swing.JPanel {
             BDConexion conecta = new BDConexion();
             Connection con = conecta.getConexion();
             PreparedStatement ps = null;
-            ps= con.prepareStatement("delete from Ventas where noorden="+noorden+" and codigo = "+codigooreden);
+            ps= con.prepareStatement("delete from Ventas where noorden="+noorden+" and estado = 1 and codigo = "+codigooreden);
             ps.executeUpdate();
             con.close();
             ps.close();
